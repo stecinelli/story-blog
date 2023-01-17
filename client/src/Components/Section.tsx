@@ -9,7 +9,9 @@ const Section = () => {
   return (
     <section className='Section'>
         <SectionTitle text={activeSection}/>
-        {postsList && postsToList.map(p=> <Article postInfo={p}/> )}
+        <div className='Article-container'>
+          {postsList && postsToList.map(p=> <Article postInfo={p}/> )}
+        </div>
     </section>
   )
 }

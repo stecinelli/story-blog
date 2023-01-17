@@ -5,7 +5,7 @@ import Body from './Body'
 import Nav from './Nav'
 
 const Main = () => {
-  const sections = ['classic','fiction','history','love','mystery']
+  const sections = ['CLASSIC','FICTION','HISTORY','LOVE','MYSTERY']
   const [activeSection, setActiveSection] = useState('classic')
   const [postsList, setPostsList] = useState < IPostList > ({
     posts:[
