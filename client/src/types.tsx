@@ -1,12 +1,12 @@
 export interface IContext {
     sections: Array<string>,
-    postsList: IPostList,
-    setPostsList: React.Dispatch<React.SetStateAction<IPostList>>,
+    postsList: post[],
+    setPostsList: React.Dispatch<React.SetStateAction<post[]>>,
     activeSection: string, 
     setActiveSection: React.Dispatch<React.SetStateAction<string>>
 }
 
-type post = {
+export type post = {
     id:number,
     title:string,
     body:string,
@@ -15,17 +15,17 @@ type post = {
     reactions:number
 }
 
-export interface IPostList {
-    posts:Array<post>,
-    total:number,
-    skip:number,
-    limit:number
-}
+// export interface IPostList {
+//     posts:Array<post>,
+//     total:number,
+//     skip:number,
+//     limit:number
+// }
 
-export interface ISectionTitleProps {
-    text: string
-}
+// export interface ISectionTitleProps {
+//     text: string
+// }
 
-export interface IArticleProps {
-    postInfo: post
-}
+// export interface IArticleProps {
+//     postInfo: post
+// }

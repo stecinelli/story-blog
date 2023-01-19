@@ -1,35 +1,24 @@
 import React, {useState, useEffect} from 'react'
 import { MainContext } from '../Context'
-import { IPostList } from '../types'
+import Section from './Section'
+// Replace the IPostList interface import with the post type
+import { post } from '../types'
 import Body from './Body'
 import Nav from './Nav'
 
 const Main = () => {
   const sections = ['classic','fiction','history','love','mystery']
   const [activeSection, setActiveSection] = useState('classic')
-  const [postsList, setPostsList] = useState < IPostList > ({
-    posts:[
-        {
-            id:1,
-            title:'His mother had always taught him',
-            body:'His mother had always taught him not to ever think of himself as better than others.',
-            userId:9,
-            tags:['history','american','classic'],
-            reactions:3
-        },
-        {
-            id:2,
-            title:'He was an expert but not in a discipline',
-            body:'He was an expert but not in a discipline that anyone could fully appreciate.',
-            userId:13,
-            tags:['french','fiction','english','mystery','american','crime','love','classic','history'],
-            reactions:2
-        }
-    ],
-    total:150,
-    skip:0,
-    limit:30
-});
+  
+  // Replace the type of this useState with an array of post[] instead of IPostList
+  const [postsList, setPostsList] = useState < post[] > ([]);
+
+  // Make the fetch more compact. Notice that we only take p['posts'] since we're ignoring the total, skip and limit
+  useEffect(() => {
+    fetch('https://dummyjson.com/posts')
+    .then(p => p.json())
+    .then(p => setPostsList(p['posts']))
+  }, [])
 
   const contextValue = {
     postsList,
@@ -39,26 +28,15 @@ const Main = () => {
     setActiveSection
   }
 
-  const getData = async () => {
-    const response = await fetch('https://dummyjson.com/posts');
-    const data = await response.json();
-
-    setPostsList(data)
-  }
-
-  useEffect(() => {
-
-    getData();
-  
-  }, [])
-  
-
   return (
     <MainContext.Provider value={contextValue}>
       <main className='Main'>
           <h1 className='Main-title'>The Story Blog</h1>
           <Nav/>
-          <Body/>
+          {/* Remove the body component since it only contained the Section*/}
+          <div className='Body'>
+            <Section/>
+          </div>
       </main>
     </MainContext.Provider>
   )
