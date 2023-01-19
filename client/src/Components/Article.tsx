@@ -1,12 +1,15 @@
 import React from 'react'
-import {IArticleProps} from '../types'
+import {post} from '../types'
 
-const Article = ({postInfo: {title, body}}: IArticleProps) => {
+// Change the prop type from IArticleProps to post since IArticleProps only contains a post
+
+const Article = ({postInfo}: {postInfo: post}) => {
   return (
     <article className='Article'>
-        <img src='https://picsum.photos/3000/2000' alt='random' className='Article-image'/>
-        <h3 className='Article-title'>{title}</h3>
-        <p>{body}</p>
+        {/* Add an id to the picsum photo so each post will have a unique picture */}
+        <img src={`https://picsum.photos/id/${postInfo.id}/3000/2000`} alt='random' className='Article-image'/>
+        <h3 className='Article-title'>{postInfo.title}</h3>
+        <p>{postInfo.body}</p>
     </article>
   )
 }

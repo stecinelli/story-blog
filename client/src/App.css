@@ -29,6 +29,10 @@
   text-transform: uppercase;
 }
 
+.active-section {
+  border-bottom: 1px solid black;
+}
+
 .Section {
   margin-left: 2%;
   margin-right: 2%;
