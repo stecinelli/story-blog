@@ -10,33 +10,32 @@
 .Main {
   display: flex;
   flex-direction: column;
-  border: 1px black solid;
 }
 
 .Main-title {
-  font-family: 'Roboto Mono', monospace;
+  font-family: 'Fredericka the Great', cursive;
 }
 
 .NavBar {
-  border: 1px black solid;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
   clear: unset;
-  font-family: 'Fredericka the Great', cursive;
+  font-family: 'Roboto Mono', monospace;
   margin-left: 2%;
   margin-right: 2%;
+  border-bottom: 1px black solid;
+  text-transform: uppercase;
 }
 
 .Section {
-  border: 1px blue solid;
   margin-left: 2%;
   margin-right: 2%;
+  font-family: 'Permanent Marker', cursive;
 }
 
 .Article-container {
-  border: 1px black solid;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -44,7 +43,16 @@
 }
 
 .Article {
-  border: 1px black solid;
   font-family: 'Caveat', cursive;
   margin: 1% 5%;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.Article-image {
+  width: 95%;
+  height: auto;
+}
+
+.Article-title{
+  font-family: 'Permanent Marker', cursive;
 }

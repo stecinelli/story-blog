@@ -1,11 +1,11 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { MainContext } from '../Context'
 import { IPostList } from '../types'
 import Body from './Body'
 import Nav from './Nav'
 
 const Main = () => {
-  const sections = ['CLASSIC','FICTION','HISTORY','LOVE','MYSTERY']
+  const sections = ['classic','fiction','history','love','mystery']
   const [activeSection, setActiveSection] = useState('classic')
   const [postsList, setPostsList] = useState < IPostList > ({
     posts:[
@@ -38,6 +38,20 @@ const Main = () => {
     activeSection, 
     setActiveSection
   }
+
+  const getData = async () => {
+    const response = await fetch('https://dummyjson.com/posts');
+    const data = await response.json();
+
+    setPostsList(data)
+  }
+
+  useEffect(() => {
+
+    getData();
+  
+  }, [])
+  
 
   return (
     <MainContext.Provider value={contextValue}>
